@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dummy News Website</title>
+    <style>
+        .slider {
+            position: relative;
+            width: 50%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            border: 2px solid #ddd;
+        }
+        .slides {
+            display: flex;
+            transition: transform 2s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            position: relative;
+        }
+        .slide img {
+            width: 100%;
+            display:inline-block;
+        }
+        .slide p {
+             position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Ensure the text container spans the entire width */
+    background: rgba(0, 0, 1, 0.8);
+    color: #fff;
+    padding: 12px; /* Adjust padding as needed */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    text-align: center; /* Center-align the text */
+    border-radius: 5px; /* Optional: keep the border radius */
+
+        }
+        .controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .header {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+        .header img {
+            width: 150px;
+        }
+        .social-icons {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .social-icons a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+        .social-icons a img {
+            width: 24px;
+            height: 24px;
+        }
+        .navbar {
+            background-color: #000;
+            padding: 10px;
+            text-align: center;
+        }
+        .navbar a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .navbar .subscribe {
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .main-content {
+            padding: 20px;
+        }
+        .category-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .category-box {
+            width: 48%;
+            background-color: #eaeaea;
+            margin-bottom: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .category-box img {
+            width: 100%;
+            height: 150px;
+            background-color: #ccc;
+            margin-bottom: 10px;
+        }
+        .articles-section {
+            margin-bottom: 40px;
+        }
+        .article {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .article img {
+            width: 100%;
+            height: 200px;
+            background-color: #ccc;
+            margin-bottom: 10px;
+        }
+        .footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        .missed-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .missed-box {
+            width: 30%;
+            background-color: #eaeaea;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .missed-box img {
+            width: 100%;
+            height: 150px;
+            background-color: #ccc;
+            margin-bottom: 10px;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .pagination a {
+            color: #007bff;
+            padding: 8px 16px;
+            margin: 0 4px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .pagination a.active {
+            background-color: #007bff;
+            color: white;
+            border: 1px solid #007bff;
+        }
+        @media (max-width: 768px) {
+            .category-box {
+                width: 100%;
+            }
+            .missed-box {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="social-icons">
+            <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+            <a href="#"><img src="email-icon.png" alt="Email"></a>
+            <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+            <a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+            <a href="#"><img src="telegram-icon.png" alt="Telegram"></a>
+        </div>
+        <img src="logo.png" alt="Website Logo">
+    </div>
+
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="#">Latest Events</a>
+        <a href="#">Featured Insights</a>
+        <a href="#">Interviews</a>
+        <a href="#" class="subscribe">Subscribe</a>
+        <a href="#">Latest News</a>
+        <a href="#">About Us</a>
+    </div>
+
+    <div class="main-content">
+        <div class="slider">
+            <div class="slides">
+                <div class="slide">
+                    <img src="icici.jpg" alt="Article 1">
+                    <p><b>Cryptic Code spooks ICICI...</b><br>Mumbai: Leading Private lender on Thursday announced a cryptic...</p>
+                </div>
+                <div class="slide">
+                    <img src="hdfc.jpg" alt="Article 2">
+                    <p><b>What it spent on tech last summer?</b><br>HDFC Bank's annual report reveals what analysts fear the most...</p>
+                </div>
+                <div class="slide">
+                    <img src="governor.jpg" alt="Article 3">
+                    <p><b>Analyzing new regulatory risks: Das</b><br>Governors across the world fear over crypto. But for Guv Das, an over...</p>
+                </div>
+            </div>
+            <div class="controls">
+                <button class="button" onclick="prevSlide()">Previous</button>
+                <button class="button" onclick="nextSlide()">Next</button>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-box">
+                <img src="pfizer.jpg" alt="Category Image">
+                <div class="category">Pharma</div>
+                <h3>Pfizer Expands Its Global Footprint with New R&D Hub in Singapore</h3>
+            </div>
+            <div class="category-box">
+                <img src="goldman.jpg" alt="Category Image">
+                <div class="category">Investment Banking</div>
+                <h3>Goldman Sachs Eyes Strategic Partnership with India's Leading Fintech Startups</h3>
+            </div>
+            <div class="category-box">
+                <img src="jnj.jpg" alt="Category Image">
+                <div class="category">Pharma</div>
+                <h3>Johnson & Johnson’s New Breakthrough in Cancer Treatment Gains FDA Approval</h3>
+            </div>
+            <div class="category-box">
+                <img src="deutsche.jpg" alt="Category Image">
+                <div class="category">Finance</div>
+                <h3>Deutsche Bank’s Strategic Shift in UAE: Focusing on Sustainable Finance</h3>
+            </div>
+        </div>
+
+        <div class="articles-section">
+            <div class="article">
+                <img src="astrazen.jpg" alt="Article Image">
+                <div class="category">Pharma</div>
+                <h3>AstraZeneca to Launch Affordable Vaccines in Emerging Markets</h3>
+                <p>August 8, 2024</p>
+                <p>Read More ></p>
+            </div>
+            <div class="article">
+                <img src="citibank.jpg" alt="Article Image">
+                <div class="category">Finance</div>
+                <h3>Citibank's Massive Digital Overhaul: A Game Changer for APAC Markets</h3>
+                <p>August 5, 2024</p>
+                <p>Read More ></p>
+            </div>
+            <div class="article">
+                <img src="unitedhealth.jpg" alt="Article Image">
+                <div class="category">Pharma</div>
+                <h3>UnitedHealth Group's Entry into the Indian Market: A Healthcare Revolution?</h3>
+                <p>August 9, 2024</p>
+                <p>Read More ></p>
+            </div>
+            <div class="article">
+                <img src="AIGpartners.jpg" alt="Article Image">
+                <div class="category">Finance</div>
+                <h3>AIG Partners with UAE Insurance Firms to Boost Regional Growth</h3>
+                <p>July 5, 2024</p>
+                <p>Read More ></p>
+            </div>
+        </div>
+
+        <div class="missed-section">
+            <div class="missed-box">
+                <img src="futurepharma.jpg" alt="Missed Image">
+                <div class="category">Artificial Intelligence</div>
+                <h3>The Future of Pharma: How AI is Revolutionizing Drug Discovery</h3>
+                <p>July 21, 2024</p>
+            </div>
+            <div class="missed-box">
+                <img src="telemed.jpg" alt="Missed Image">
+                <div class="category">Features</div>
+                <h3>Breaking Down Barriers: The Role of Telemedicine in Global Healthcare</h3>
+                <p>August 5, 2024</p>
+            </div>
+            <div class="missed-box">
+                <img src="digitalbank.jpg" alt="Missed Image">
+                <div class="category">Features</div>
+                <h3>The Rise of Digital Banks in APAC: What It Means for Traditional Banking</h3>
+                <p>July 21, 2024</p>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">&raquo;</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>This website is a dummy layout built using simple HTML and some script. Ideally, should be using Newsis theme powered by BlazeThemes.</p>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelector('.slides');
+            const totalSlides = document.querySelectorAll('.slide').length;
+            if (index >= totalSlides) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = totalSlides - 1;
+            } else {
+                currentSlide = index;
+            }
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Initialize the slider to show the first slide
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
